@@ -1,0 +1,67 @@
+package com.akmozo.wstest.service;
+
+import com.akmozo.wstest.dao.IAgentDAO;
+import com.akmozo.wstest.dao.IReservationDAO;
+import com.akmozo.wstest.entity.Agent;
+import com.akmozo.wstest.entity.Reservation;
+import java.util.Date;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.jws.WebParam;
+
+@Stateless
+//@WebService(endpointInterface = "com.akmozo.wstest.service.IService")
+public class Service implements IService {
+
+    @EJB
+    IAgentDAO agentDAO;
+    @EJB
+    IReservationDAO reservationDAO;
+    
+    @Override
+    public Agent addAgent(@WebParam(name = "agent") Agent paramAgent) {
+        return agentDAO.addAgent(paramAgent);
+    }  
+
+    @Override
+    public Agent getAgent(@WebParam(name ="agent_id") int paramAgentId) {
+        return agentDAO.getAgent(paramAgentId);
+    }
+
+    @Override
+    public List<Agent> getAgentByVille(@WebParam(name = "ville") String paramVille) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Agent> getAgentByVilleAndHeure(@WebParam(name = "ville") String paramVille, @WebParam(name = "heure") Date paramHeure) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Reservation addReservation(@WebParam(name = "reservation") Reservation paramReservation) {
+        return reservationDAO.addReservation(paramReservation);
+    }
+
+    @Override
+    public Reservation getReservation(Reservation paramReservation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Reservation> getReservationByAgent(Agent paramAgent) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Reservation> getReservationByAgentId(int paramAgentId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Reservation> getReservationVilleAndHeure(String paramVille, Date paramHeure) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+}

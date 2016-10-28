@@ -1,0 +1,27 @@
+package com.akmozo.wstest.service;
+
+import com.akmozo.wstest.entity.Agent;
+import com.akmozo.wstest.entity.Reservation;
+import java.util.Date;
+import java.util.List;
+import javax.ejb.Local;
+
+@Local
+//@Remote
+//@WebService
+public interface IService {
+    
+    // agent
+    public Agent addAgent(Agent paramAgent);
+    public Agent getAgent(int paramAgentId);
+    public List<Agent> getAgentByVille(String paramVille);
+    public List<Agent> getAgentByVilleAndHeure(String paramVille, Date paramHeure);
+    
+    // reservation
+    public Reservation addReservation(Reservation paramReservation);
+    public Reservation getReservation(Reservation paramReservation);
+    public List<Reservation> getReservationByAgent(Agent paramAgent);
+    public List<Reservation> getReservationByAgentId(int paramAgentId);
+    public List<Reservation> getReservationVilleAndHeure(String paramVille, Date paramHeure);
+    
+}
