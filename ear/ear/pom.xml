@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.akmozo</groupId>
+    <artifactId>ws.ear</artifactId>
+    <version>0.1</version>
+    <packaging>ear</packaging>
+
+    <name>ws.ear</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        
+        <dependency>
+            <groupId>com.akmozo</groupId>
+            <artifactId>ws.entity</artifactId>
+            <version>0.1</version>
+            <type>ejb</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.akmozo</groupId>
+            <artifactId>ws.services</artifactId>
+            <version>0.1</version>
+            <type>ejb</type>
+        </dependency>
+                                
+    </dependencies>
+
+    <build>
+        <plugins>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.6</version>               
+                <configuration>
+                    <version>6</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>           
+                    <finalName>api</finalName>
+                    <modules>
+                        <ejbModule>
+                            <groupId>com.akmozo</groupId>
+                            <artifactId>ws.entity</artifactId>
+                            <bundleFileName>entity.jar</bundleFileName>
+                        </ejbModule>            
+                        <ejbModule>
+                            <groupId>com.akmozo</groupId>
+                            <artifactId>ws.services</artifactId>
+                            <bundleFileName>ws.jar</bundleFileName>
+                        </ejbModule>
+                    </modules>
+                </configuration>                
+                
+            </plugin>
+            
+        </plugins>
+        <finalName>api</finalName>
+    </build>
+
+</project>
